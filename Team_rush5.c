@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// ====== CALCULATRICE  ======
+// ====== CALCULATRICE ========
 void calculatrice() {
     double num1, num2;
     char operator;
@@ -52,7 +52,21 @@ void verifier_nombre_premier() {
         printf("%d n'est pas un nombre premier.\n", n);
 }
 
-// ====== FACTORIELLE  ======
+// ====== SUITE DE FIBONACCI ======
+void fibonacci(int n) {
+    long long a = 0, b = 1, temp;
+
+    printf("Suite de Fibonacci jusqu'à %d termes :\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("%lld ", a);
+        temp = a + b;
+        a = b;
+        b = temp;
+    }
+    printf("\n");
+}
+
+// ====== FACTORIELLE =======
 void calcul_factorielle() {
     int n;
     long long f = 1;
@@ -77,10 +91,11 @@ int main() {
     int choix;
 
     do {
-        printf("\n=== Rush team_5 ===\n");
+        printf("soyez le bienvenu, faite un choix :\n");
         printf("1. Calculatrice\n");
         printf("2. Vérifier un nombre premier\n");
-        printf("3. Factorielle\n");
+        printf("3. Suite de Fibonacci\n");
+        printf("4. Factorielle\n");
         printf("0. Quitter\n");
         printf("Votre choix : ");
         scanf("%d", &choix);
@@ -92,12 +107,22 @@ int main() {
             case 2:
                 verifier_nombre_premier();
                 break;
-            case 3:
+            case 3: {
+                int n;
+                printf("Combien de termes voulez-vous ? ");
+                scanf("%d", &n);
+                if (n > 0)
+                    fibonacci(n);
+                else
+                    printf("Erreur : nombre invalide.\n");
+                break;
+            }
+            case 4:
                 calcul_factorielle();
                 break;
             case 0:
-                printf("Merci d'avoir utilisé notre projet Team5_rush01");
-                break;
+                printf("Merci d'avoir utilisé notre programme Team5_rush01 \n");
+               break;
             default:
                 printf("Choix invalide. Réessayez.\n");
         }
